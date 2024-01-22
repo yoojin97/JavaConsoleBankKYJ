@@ -13,8 +13,8 @@ package banking;
 		
 		public void showAccInfo() {
 		System.out.println("------------------");
-		System.out.println("계좌번호: +accountNo");
-		System.out.println("고객이름: +name");
-		System.out.println("잔고: +balance");
+		System.out.println("계좌번호: " +accountNo);
+		System.out.println("고객이름: " +name);
+		System.out.println("잔고: " +balance);
 		}
 }

@@ -17,7 +17,7 @@ public class SystemMain {
 		   
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
-		AccountInfoHandler handler = new AccountInfoHandler();
+		AccountInfoHandler handler = new AccountInfoHandler(50);
 
 		while (true){
 			showMenu() ;          
