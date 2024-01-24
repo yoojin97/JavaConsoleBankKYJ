@@ -5,7 +5,7 @@ import banking1.Account;
 public class NormalAccount extends Account {
          int interest;
    public NormalAccount(String accountNo, String name, int balance, int interest) {   
-      super(accountNo, name, balance,   interest);
+      super(accountNo, name, balance, interest);
       
       
    }

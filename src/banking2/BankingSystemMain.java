@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import banking1.ICustomDefine.IManager;
 
-public class BankingSystemMain {
+public class BankingSystemMain implements ICustomDefine {
 
    public static void showMenu() {
             
@@ -28,19 +28,19 @@ public class BankingSystemMain {
            
            switch(choice) {
            
-           case IManager.MAKE:
+           case MAKE:
               handler.makeAccount();
               break;
-           case IManager.DEPOSIT:
+           case DEPOSIT:
               handler.depositMoney();
               break;
-           case IManager.WITHDRAW:
+           case WITHDRAW:
               handler.withdrawMoney();
               break;
-           case IManager.INQUIRE:
+           case INQUIRE:
               handler.showAccInfo();
               break;
-           case IManager.EXIT:
+           case EXIT:
               System.out.println("프로그램 종료");
               return;
          }   

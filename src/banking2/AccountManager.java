@@ -37,7 +37,9 @@ public class AccountManager {
 			balance = scan.nextInt();
 			System.out.print("기본이자%(정수형태로입력):");
 			interest = scan.nextInt();
-			accountLists[numOfAccount++] = new NormalAccount(accountNo, name, balance, interest);
+			
+			accountLists[numOfAccount++]= new NormalAccount(accountNo, name, balance, interest);
+			
 		} else {
 			System.out.println("***신규계좌개설***");
 			System.out.print("계좌번호 :");
@@ -69,9 +71,11 @@ public class AccountManager {
 		System.out.print("계좌번호: ");
 		accountNo = scan.nextLine();
 		for (int i = 0; i < numOfAccount; i++) {
-			if (accountLists[i].accountNo == accountNo) {
-				System.out.print("입금액: ");
-				deposit = scan.nextInt();
+			/* accountNo String으로 했기에 숫자로 받을 수 없으므로 == 은 사용불가
+				 compare to 또는 equals 를 사용해야함 */
+			if (accountNo.equals(accountLists[i].accountNo)) {
+				System.out.print("입금액: "); deposit = scan.nextInt();
+				
 				accountLists[i].balance += deposit;
 			}
 
@@ -81,7 +85,9 @@ public class AccountManager {
 
 	// 출금
 	public void withdrawMoney() {
+		
 		Scanner scan = new Scanner(System.in);
+		
 		System.out.println("계좌번호와 출금할 금액을 입력하세요.");
 		String accountNo;
 		int deposit;
@@ -89,9 +95,7 @@ public class AccountManager {
 		System.out.print("계좌번호: ");
 		accountNo = scan.nextLine();
 		for (int i = 0; i < numOfAccount; i++) {
-
-			System.out.println("출금액: ");
-			deposit = scan.nextInt();
+			System.out.println("출금액: "); deposit = scan.nextInt();
 			accountLists[i].balance -= deposit;
 
 			System.out.println("출금이 완료되었습니다.");
