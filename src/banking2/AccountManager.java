@@ -14,19 +14,24 @@ public class AccountManager {
 	}
 
 	// 계좌개설
+	/*Account클래스 내에는 계좌번호/이름/잔액의 멤버변수,
+	입금과 출금시 잔액이 변경되어야 하기에 이에 관련된 함수가 존재함*/
+	
 	public void makeAccount() {
 		Scanner scan = new Scanner(System.in);
 		String accountNo, name;
-
-		int balance;
-		int interest;
+		
+		//string형과 int형을 통해 잔고, 이자, 등급 생성
+		int balance; 
+		int interest; 
 		String grade;
 
 		System.out.println("***계좌선택***");
 		System.out.println("1.보통계좌");
 		System.out.println("2.신용신뢰계좌");
 		int choice = scan.nextInt();
-
+		
+		// choice로 1번 선택시 보통예금계좌로 이동하여 스캔을 전부 읽으면 accountlists에 담는다
 		if (choice == 1) {
 			System.out.println("***신규계좌개설***");
 			System.out.print("계좌번호 :");
@@ -39,7 +44,8 @@ public class AccountManager {
 			interest = scan.nextInt();
 			
 			accountLists[numOfAccount++]= new NormalAccount(accountNo, name, balance, interest);
-			
+		
+		//신용신뢰계좌
 		} else {
 			System.out.println("***신규계좌개설***");
 			System.out.print("계좌번호 :");
@@ -68,12 +74,18 @@ public class AccountManager {
 		String accountNo;
 		int deposit;
 
-		System.out.print("계좌번호: ");
-		accountNo = scan.nextLine();
+		System.out.print("계좌번호: "); accountNo = scan.nextLine();
+		
+		/*문자나 객체를 비교할 때는 ==가 아닌 equals를 사용해야함
+			 문자열은 주소를 저장하기 때문에 내용이 같더라도 서로 다른 객체를 참조하고 있으면
+			 == 비교연산자를 사용할 경우 결과가 달라지기 때문이다. */
+		
+		/* numOfAccount안에 계좌정보가 담겨있어 각 정보를 읽을 수 있으며
+		  그 계좌의 잔고를 확인해 deposit으로 더해준다. */
 		for (int i = 0; i < numOfAccount; i++) {
 			if (accountNo.equals(accountLists[i].accountNo)) {
-				System.out.print("입금액: "); deposit = scan.nextInt();
 				
+				System.out.print("입금액: "); deposit = scan.nextInt();
 				accountLists[i].balance += deposit;
 			}
 		}
@@ -89,8 +101,8 @@ public class AccountManager {
 		String accountNo;
 		int deposit;
 
-		System.out.print("계좌번호: ");
-		accountNo = scan.nextLine();
+		System.out.print("계좌번호: "); accountNo = scan.nextLine();
+		
 		for (int i = 0; i < numOfAccount; i++) {
 			System.out.println("출금액: "); deposit = scan.nextInt();
 			accountLists[i].balance -= deposit;
@@ -103,9 +115,11 @@ public class AccountManager {
 	public void showAccInfo() {
 
 		System.out.println("***계좌정보출력***");
+		
 		for (int i = 0; i < numOfAccount; i++) {
 			accountLists[i].showAccInfo();
 		}
+		
 		System.out.println("전체계좌정보 출력이 완료되었습니다.");
 	}
 }
