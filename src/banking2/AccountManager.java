@@ -71,16 +71,13 @@ public class AccountManager {
 		System.out.print("계좌번호: ");
 		accountNo = scan.nextLine();
 		for (int i = 0; i < numOfAccount; i++) {
-			/* accountNo String으로 했기에 숫자로 받을 수 없으므로 == 은 사용불가
-				 compare to 또는 equals 를 사용해야함 */
 			if (accountNo.equals(accountLists[i].accountNo)) {
 				System.out.print("입금액: "); deposit = scan.nextInt();
 				
 				accountLists[i].balance += deposit;
 			}
-
-			System.out.println("입금이 완료되었습니다.");
 		}
+		System.out.println("입금이 완료되었습니다.");
 	}
 
 	// 출금

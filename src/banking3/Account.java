@@ -21,6 +21,4 @@ public class Account {
     public void cal() {}
 }
 
-/*banking1 infohandler에 있는 입금부분 deposit를 받아서
-뱅킹1에 account(보통계좌), 뱅킹2에 있는 account1(신용계좌)계산식을 합치는 부분 */
 
